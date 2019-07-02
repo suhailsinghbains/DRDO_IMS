@@ -22,11 +22,23 @@
                     <label for="recipient">Recipient User ID</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="title" name="title" type="text" class="validate" data-length="50">
+                    <input id="title" name="title" type="text" class="validate">
                     <label for="title">Title</label>
                 </div>
                 <div class="input-field col s6">
-                    <textarea id="content" name="content" class="materialize-textarea" data-length="500"></textarea>
+                    <textarea id="content" name="content" class="materialize-textarea">
+                        &#13;&#10;&#13;&#10;&#13;&#10;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CPU:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RAM:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PSU:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keyboard:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mouse:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UPS:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Printer:&nbsp;&nbsp;
+                        &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner:&nbsp;&nbsp;
+                        &#13;&#10;Thanks
+                    </textarea>
                     <label for="content">Content</label>
                 </div>
                 <div style="text-align: center">
@@ -59,7 +71,7 @@
             document.getElementById('Form').style.display = 'none';
             document.getElementById('addIcon').style.display = 'block';
             document.getElementById('title').value = "";
-            document.getElementById('content').value = "";
+            document.getElementById('content').value = '\n\n\n\n \n     CPU:  \n\n     RAM:  \n\n     PSU:  \n\n     Display:  \n\n     Keyboard:  \n\n     Mouse:  \n\n     UPS:  \n\n     Printer:  \n\n     Scanner:  \n\nThanks';
             $('input#title, textarea#content').characterCounter();
         }
     }
