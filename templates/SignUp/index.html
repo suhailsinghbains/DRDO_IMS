@@ -1,0 +1,33 @@
+{% extends 'NavBar/index.html' %}
+{% block head %}
+<title>SignUp</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h1>Sign Up</h1>
+<div class="row">
+    <form class="col s12" action="/signUp" method="POST">
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="userId" type="text" class="validate">
+          <label for="userId">User ID</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input name="cfmpassword" type="password" class="validate">
+          <label for="cfmpassword">Confirm Password</label>
+        </div>
+      </div>
+      <input class="btn waves-effect waves-light" type="submit" value="Submit"> 
+    </form>
+  </div>
+  </div>
+  {% endblock %}

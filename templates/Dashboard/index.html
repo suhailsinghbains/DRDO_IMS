@@ -1,0 +1,159 @@
+{% extends 'Nav/index.html' %}
+{% block head %}
+<title>DRDO: Dashboard</title>
+{% endblock %}
+
+{% block body %}
+<div class="container" style="font-size: 20px;">
+  <h1>Welcome {{data.name}}</h1>
+  <a id="editIcon" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
+    data-tooltip="Edit"><i class="material-icons" onclick="Update(true)">edit</i></a>
+
+  <a id="updateIcon" class="btn-large teal waves-effect waves-light tooltipped" data-position="bottom"
+    onclick="Update(false)" data-tooltip="Update" style="display: none;width: 20%;">Update<i
+      class="material-icons right">send</i></a>
+  <div class="s12 section row" style="text-align: center">
+    <div class="col s6">ID</div>
+    <div class="col s6" name="empId">{{data.empId}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="s12 section row" style="text-align: center">
+    <div class="col s6">Name</div>
+    <div class="col s6" name="name">{{data.name}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="s12 section row" style="text-align: center">
+    <div class="col s6">Group</div>
+    <div class="col s6" name="group">{{data.group}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="s12 section row" style="text-align: center">
+    <div class="col s6">DOB</div>
+    <div class="col s6" name="dob">{{data.dob}}</div>
+  </div>
+  <div class="divider"></div>
+  <div class="s12 section row" style="text-align: center">
+    <div class="col s6">Address</div>
+    <div class="col s6" name="address">{{data.address}}</div>
+  </div>
+  <div class="divider"></div>
+  <div id="showingMoreButton">
+    <br />
+    <div style="text-align: center">
+      <a class="waves-effect waves-light btn-large" onclick="Show(true)">Show More</a>
+    </div>
+  </div>
+
+  <div id="showingMore" style="display: none">
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">CPU</div>
+      <div class="col s6">{{data.cpu}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">RAM</div>
+      <div class="col s6">{{data.ram}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">PSU</div>
+      <div class="col s6">{{data.psu}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">Display</div>
+      <div class="col s6">{{data.display}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">Keyboard</div>
+      <div class="col s6">{{data.keyboard}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">Mouse</div>
+      <div class="col s6">{{data.mouse}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">UPS</div>
+      <div class="col s6">{{data.ups}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">Printer</div>
+      <div class="col s6">{{data.printer}}</div>
+    </div>
+    <div class="divider"></div>
+    <div class="s12 section row" style="text-align: center">
+      <div class="col s6">UPS</div>
+      <div class="col s6">{{data.scanner}}</div>
+    </div>
+    <div class="divider"></div>
+
+    <br />
+    <div style="text-align: center">
+      <a class="waves-effect waves-light btn-large" onclick="Show(false)">Collapse</a>
+    </div>
+  </div>
+  <!-- 
+  <div class="row">
+    Id: {{data.empId}}
+    Dashboard {{data}}
+  </div>
+   -->
+</div>
+<script>
+  function Show(Bool) {
+    if (Bool) {
+      document.getElementById('showingMoreButton').style.display = 'none';
+      document.getElementById('showingMore').style.display = 'block';
+    } else {
+      document.getElementById('showingMore').style.display = 'none';
+      document.getElementById('showingMoreButton').style.display = 'block';
+    }
+  }
+  function Update(Bool) {
+    if (Bool) {
+      document.getElementsByName("name")[0].innerHTML = '<div class="marginTop10"><input value={{data.name}} id="name" type="text" class="validate"></div>';
+      document.getElementsByName("group")[0].innerHTML = '<div class="marginTop10"><input value={{data.group}} id="group" type="text" class="validate"></div>';
+      document.getElementsByName("dob")[0].innerHTML = '<div class="marginTop10"><input value={{data.dob}} id="dob" type="text" class="validate"></div>';
+      document.getElementsByName("address")[0].innerHTML = '<div class="marginTop10"><input value={{data.address}} id="address" type="text" class="validate"></div>';
+      document.getElementById('editIcon').style.display = 'none';
+      document.getElementById('updateIcon').style.display = 'block';
+    } else {
+      // var data = {
+      //   "empId": document.getElementsByName("empId")[0].innerHTML,
+      //   "name": document.getElementById('name').value,
+      //   "group": document.getElementById('group').value,
+      //   "dob": document.getElementById('dob').value,
+      //   "address": document.getElementById('address').value
+      // }
+      var data =
+        document.getElementsByName("empId")[0].innerHTML + ',' +
+        document.getElementById('name').value + ',' +
+        document.getElementById('group').value + ',' +
+        document.getElementById('dob').value + ',' +
+        document.getElementById('address').value
+      document.getElementsByName("name")[0].innerHTML = "{{data.name}}";
+      document.getElementsByName("group")[0].innerHTML = "{{data.group}}";
+      document.getElementsByName("dob")[0].innerHTML = "{{data.dob}}";
+      document.getElementsByName("address")[0].innerHTML = "{{data.address}}";
+      document.getElementById('updateIcon').style.display = 'none';
+      document.getElementById('editIcon').style.display = 'block';
+      $.post("/dashboard", {
+        'js_data': data
+      }).then(newData=>{
+        // console.log(newData)
+        location.reload()
+      });
+    }
+  }
+</script>
+<style>
+  .marginTop10 {
+    margin-bottom: -15px;
+    margin-top: -10px;
+  }
+</style>
+{% endblock %}
