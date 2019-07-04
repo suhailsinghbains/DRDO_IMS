@@ -230,11 +230,13 @@ def signup():
         userId = request.form['userId']
         password = request.form['password']
         cfmpassword = request.form['cfmpassword']
+        print(userId, password, cfmpassword)
         if(cfmpassword==password):
             auth = Auth.query.filter_by(empId = userId).first()
             if(auth == None):
                 authUser = Auth(userId, password)
-                emp = Employees(empId=userId)
+                emp = Employees(userId,'none', 'none', 'none', 'none')
+                print(emp)
                 db.session.add(authUser)
                 db.session.add(emp)
                 db.session.commit()
