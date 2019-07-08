@@ -40,67 +40,68 @@
   {% if admin==True %}
   <div class="classContainer">
     <div>
-        <div id="searchIcon" style="text-align-last: center">
-          <br />
-            <a class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
-            data-tooltip="Search"><i class="material-icons" onclick="Seaching(true)">search</i></a></div>
-        <div id="searchDiv" style="display: none;">
-      <div class="row">
-        <div class="input-field col s1">
-          <input id="EmpIdSearch" type="text" class="validate" onkeyup="myFunction(0, 'EmpIdSearch')" >
-          <label for="EmpIdSearch">EmpId  Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="NameSearch" type="text" class="validate" onkeyup="myFunction(1, 'NameSearch')" >
-          <label for="NameSearch">Name  Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="GroupSearch" type="text" class="validate" onkeyup="myFunction(2, 'GroupSearch')" >
-          <label for="GroupSearch">Group Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="CPUSearch" type="text" class="validate" onkeyup="myFunction(3, 'CPUSearch')" >
-          <label for="CPUSearch">CPU Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="RAMSearch" type="text" class="validate" onkeyup="myFunction(4, 'RAMSearch')" >
-          <label for="RAMSearch">RAM Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="PSUSearch" type="text" class="validate" onkeyup="myFunction(5, 'PSUSearch')" >
-          <label for="PSUSearch">PSU Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="DisSearch" type="text" class="validate" onkeyup="myFunction(6, 'DisSearch')" >
-          <label for="DisSearch">Display Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="KeyboardSearch" type="text" class="validate" onkeyup="myFunction(7, 'KeyboardSearch')" >
-          <label for="KeyboardSearch">Keyboard Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="MouseSearch" type="text" class="validate" onkeyup="myFunction(8, 'MouseSearch')" >
-          <label for="MouseSearch">Mouse Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="UPSSearch" type="text" class="validate" onkeyup="myFunction(9, 'UPSSearch')" >
-          <label for="UPSSearch">UPS Search</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="PrinterSearch" type="text" class="validate" onkeyup="myFunction(10, 'PrinterSearch')" >
-          <label for="PrinterSearch">Printer Search</label>
-        </div>
-        <div class="input-field col s1">
-            <input id="ScannerSearch" type="text" class="validate" onkeyup="myFunction(11, 'ScannerSearch')" >
+      <div id="searchIcon" style="text-align-last: center">
+        <br />
+        <a class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
+          data-tooltip="Search"><i class="material-icons" onclick="Seaching(true)">search</i></a></div>
+      <div id="searchDiv" style="display: none;">
+        <div class="row">
+          <div class="input-field col s1">
+            <input id="EmpIdSearch" type="text" class="validate" onkeyup="myFunction(0, 'EmpIdSearch')">
+            <label for="EmpIdSearch">EmpId Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="NameSearch" type="text" class="validate" onkeyup="myFunction(1, 'NameSearch')">
+            <label for="NameSearch">Name Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="GroupSearch" type="text" class="validate" onkeyup="myFunction(2, 'GroupSearch')">
+            <label for="GroupSearch">Group Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="CPUSearch" type="text" class="validate" onkeyup="myFunction(3, 'CPUSearch')">
+            <label for="CPUSearch">CPU Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="RAMSearch" type="text" class="validate" onkeyup="myFunction(4, 'RAMSearch')">
+            <label for="RAMSearch">RAM Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="PSUSearch" type="text" class="validate" onkeyup="myFunction(5, 'PSUSearch')">
+            <label for="PSUSearch">PSU Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="DisSearch" type="text" class="validate" onkeyup="myFunction(6, 'DisSearch')">
+            <label for="DisSearch">Display Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="KeyboardSearch" type="text" class="validate" onkeyup="myFunction(7, 'KeyboardSearch')">
+            <label for="KeyboardSearch">Keyboard Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="MouseSearch" type="text" class="validate" onkeyup="myFunction(8, 'MouseSearch')">
+            <label for="MouseSearch">Mouse Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="UPSSearch" type="text" class="validate" onkeyup="myFunction(9, 'UPSSearch')">
+            <label for="UPSSearch">UPS Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="PrinterSearch" type="text" class="validate" onkeyup="myFunction(10, 'PrinterSearch')">
+            <label for="PrinterSearch">Printer Search</label>
+          </div>
+          <div class="input-field col s1">
+            <input id="ScannerSearch" type="text" class="validate" onkeyup="myFunction(11, 'ScannerSearch')">
             <label for="ScannerSearch">Scanner Search</label>
           </div>
-      </div>
-      <div style="text-align-last: center">
-          <a id="cancelIcon" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
-          data-tooltip="Cancel Searching"><i class="material-icons" onclick="Seaching(false)">cancel</i></a>
         </div>
-    </div>
-        
+        <div style="text-align-last: center">
+          <a id="cancelIcon" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+            data-position="bottom" data-tooltip="Cancel Searching"><i class="material-icons"
+              onclick="Seaching(false)">cancel</i></a>
+        </div>
+      </div>
+
     </div>
     <table class="highlight centered responsive-table" id="myTable">
       <thead>
@@ -202,12 +203,12 @@
   <div style="text-align-last: center">
     <br />
     <a id="editTable" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
-    data-tooltip="Edit Table"><i class="material-icons" onclick="location.href='edit'">edit</i></a>
+      data-tooltip="Edit Table"><i class="material-icons" onclick="location.href='edit'">edit</i></a>
     <br />
     <br />
     <br />
   </div>
-  
+
 </div>
 <script>
   function Show(Bool) {
@@ -256,12 +257,12 @@
     }
   }
   function Seaching(Bool) {
-    if(Bool){
-      document.getElementById('searchIcon').style.display='none';
-      document.getElementById('searchDiv').style.display='block';
-    } else{
-      document.getElementById('searchDiv').style.display='none';
-      document.getElementById('searchIcon').style.display='block';
+    if (Bool) {
+      document.getElementById('searchIcon').style.display = 'none';
+      document.getElementById('searchDiv').style.display = 'block';
+    } else {
+      document.getElementById('searchDiv').style.display = 'none';
+      document.getElementById('searchIcon').style.display = 'block';
       document.getElementById('EmpIdSearch').value = '';
       document.getElementById('NameSearch').value = '';
       document.getElementById('GroupSearch').value = '';
@@ -278,7 +279,7 @@
       var input, filter, table, tr, td, i, txtValue;
       table = document.getElementById("myTable");
       tr = table.getElementsByTagName("tr");
-    
+
       // Loop through all table rows, and hide those who don't match the search query
       for (i = 0; i < tr.length; i++) {
         tr[i].style.display = "";
@@ -343,28 +344,28 @@
   }
 </script>
 <script>
-    function myFunction(tableval, inputId) {
-      // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById(inputId);
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-    
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[tableval];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1 && tr[i].style.display!="none") {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
+  function myFunction(tableval, inputId) {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById(inputId);
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[tableval];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1 && tr[i].style.display != "none") {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
         }
       }
     }
-    </script>
+  }
+</script>
 <style>
   .marginTop10 {
     margin-bottom: -15px;

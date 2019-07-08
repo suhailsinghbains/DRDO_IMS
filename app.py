@@ -454,9 +454,10 @@ def edit():
     else:
         admin = Auth.query.filter_by(empId = session['userId']).first().admin
         # Doing Magic Here
-        if(emp!=None or admin==True):
+        if(admin==True):
+            employees = Employees.query.all()
 
-            return render_template('Edit/index.html')
+            return render_template('Edit/index.html', Employees=employees)
         else:
             return 'Unauth'
 
