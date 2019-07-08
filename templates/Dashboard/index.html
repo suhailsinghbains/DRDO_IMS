@@ -37,13 +37,115 @@
     <div class="col s6" name="address">{{data.address}}</div>
   </div>
   <div class="divider"></div>
+  {% if admin==True %}
+  <div class="classContainer">
+    <div>
+        <div id="searchIcon" style="text-align-last: center">
+          <br />
+            <a class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
+            data-tooltip="Search"><i class="material-icons" onclick="Seaching(true)">search</i></a></div>
+        <div id="searchDiv" style="display: none;">
+      <div class="row">
+        <div class="input-field col s1">
+          <input id="EmpIdSearch" type="text" class="validate" onkeyup="myFunction(0, 'EmpIdSearch')" >
+          <label for="EmpIdSearch">EmpId  Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="NameSearch" type="text" class="validate" onkeyup="myFunction(1, 'NameSearch')" >
+          <label for="NameSearch">Name  Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="GroupSearch" type="text" class="validate" onkeyup="myFunction(2, 'GroupSearch')" >
+          <label for="GroupSearch">Group Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="CPUSearch" type="text" class="validate" onkeyup="myFunction(3, 'CPUSearch')" >
+          <label for="CPUSearch">CPU Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="RAMSearch" type="text" class="validate" onkeyup="myFunction(4, 'RAMSearch')" >
+          <label for="RAMSearch">RAM Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="PSUSearch" type="text" class="validate" onkeyup="myFunction(5, 'PSUSearch')" >
+          <label for="PSUSearch">PSU Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="DisSearch" type="text" class="validate" onkeyup="myFunction(6, 'DisSearch')" >
+          <label for="DisSearch">Display Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="KeyboardSearch" type="text" class="validate" onkeyup="myFunction(7, 'KeyboardSearch')" >
+          <label for="KeyboardSearch">Keyboard Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="MouseSearch" type="text" class="validate" onkeyup="myFunction(8, 'MouseSearch')" >
+          <label for="MouseSearch">Mouse Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="UPSSearch" type="text" class="validate" onkeyup="myFunction(9, 'UPSSearch')" >
+          <label for="UPSSearch">UPS Search</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="PrinterSearch" type="text" class="validate" onkeyup="myFunction(10, 'PrinterSearch')" >
+          <label for="PrinterSearch">Printer Search</label>
+        </div>
+        <div class="input-field col s1">
+            <input id="ScannerSearch" type="text" class="validate" onkeyup="myFunction(11, 'ScannerSearch')" >
+            <label for="ScannerSearch">Scanner Search</label>
+          </div>
+      </div>
+      <div style="text-align-last: center">
+          <a id="cancelIcon" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
+          data-tooltip="Cancel Searching"><i class="material-icons" onclick="Seaching(false)">cancel</i></a>
+        </div>
+    </div>
+        
+    </div>
+    <table class="highlight centered responsive-table" id="myTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">EmpId</th>
+          <th onclick="sortTable(1)">Name</th>
+          <th onclick="sortTable(2)">Group</th>
+          <th onclick="sortTable(3)">CPU</th>
+          <th onclick="sortTable(4)">RAM</th>
+          <th onclick="sortTable(5)">PSU</th>
+          <th onclick="sortTable(6)">Display</th>
+          <th onclick="sortTable(7)">Keyboard</th>
+          <th onclick="sortTable(8)">Mouse</th>
+          <th onclick="sortTable(9)">UPS</th>
+          <th onclick="sortTable(10)">Printer</th>
+          <th onclick="sortTable(11)">Scanner</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in alldata %}
+        <tr>
+          {% for prop in item %}
+          <td>
+            {% if item[prop] !=[] %}
+            {% for row in item[prop]%}
+            {{row}}</br>
+            {% endfor %}
+            {% else %}
+            -
+            {% endif %}
+          </td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+  {% else %}
   <div id="showingMoreButton">
     <br />
     <div style="text-align: center">
       <a class="waves-effect waves-light btn-large" onclick="Show(true)">Show More</a>
     </div>
   </div>
-
   <div id="showingMore" style="display: none">
     <div class="s12 section row" style="text-align: center">
       <div class="col s6">CPU</div>
@@ -96,12 +198,16 @@
       <a class="waves-effect waves-light btn-large" onclick="Show(false)">Collapse</a>
     </div>
   </div>
-  <!-- 
-  <div class="row">
-    Id: {{data.empId}}
-    Dashboard {{data}}
+  {%endif %}
+  <div style="text-align-last: center">
+    <br />
+    <a id="editTable" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped" data-position="bottom"
+    data-tooltip="Edit Table"><i class="material-icons" onclick="location.href='edit'">edit</i></a>
+    <br />
+    <br />
+    <br />
   </div>
-   -->
+  
 </div>
 <script>
   function Show(Bool) {
@@ -115,10 +221,10 @@
   }
   function Update(Bool) {
     if (Bool) {
-      document.getElementsByName("name")[0].innerHTML = '<div class="marginTop10"><input value={{data.name}} id="name" type="text" class="validate"></div>';
-      document.getElementsByName("group")[0].innerHTML = '<div class="marginTop10"><input value={{data.group}} id="group" type="text" class="validate"></div>';
-      document.getElementsByName("dob")[0].innerHTML = '<div class="marginTop10"><input value={{data.dob}} id="dob" type="text" class="validate"></div>';
-      document.getElementsByName("address")[0].innerHTML = '<div class="marginTop10"><input value={{data.address}} id="address" type="text" class="validate"></div>';
+      document.getElementsByName("name")[0].innerHTML = '<div class="marginTop10"><input value="{{data.name}}" id="name" type="text" class="validate"></div>';
+      document.getElementsByName("group")[0].innerHTML = '<div class="marginTop10"><input value="{{data.group}}" id="group" type="text" class="validate"></div>';
+      document.getElementsByName("dob")[0].innerHTML = '<div class="marginTop10"><input value="{{data.dob}}" id="dob" type="text" class="validate"></div>';
+      document.getElementsByName("address")[0].innerHTML = '<div class="marginTop10"><input value="{{data.address}}" id="address" type="text" class="validate"></div>';
       document.getElementById('editIcon').style.display = 'none';
       document.getElementById('updateIcon').style.display = 'block';
     } else {
@@ -143,17 +249,141 @@
       document.getElementById('editIcon').style.display = 'block';
       $.post("/dashboard", {
         'js_data': data
-      }).then(newData=>{
+      }).then(newData => {
         // console.log(newData)
         location.reload()
       });
     }
   }
+  function Seaching(Bool) {
+    if(Bool){
+      document.getElementById('searchIcon').style.display='none';
+      document.getElementById('searchDiv').style.display='block';
+    } else{
+      document.getElementById('searchDiv').style.display='none';
+      document.getElementById('searchIcon').style.display='block';
+      document.getElementById('EmpIdSearch').value = '';
+      document.getElementById('NameSearch').value = '';
+      document.getElementById('GroupSearch').value = '';
+      document.getElementById('CPUSearch').value = '';
+      document.getElementById('RAMSearch').value = '';
+      document.getElementById('PSUSearch').value = '';
+      document.getElementById('DisSearch').value = '';
+      document.getElementById('KeyboardSearch').value = '';
+      document.getElementById('MouseSearch').value = '';
+      document.getElementById('UPSSearch').value = '';
+      document.getElementById('PrinterSearch').value = '';
+      document.getElementById('ScannerSearch').value = '';
+
+      var input, filter, table, tr, td, i, txtValue;
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        tr[i].style.display = "";
+      }
+    }
+  }
 </script>
+<script>
+  function sortTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    // Set the sorting direction to ascending:
+    dir = "asc";
+    /* Make a loop that will continue until
+    no switching has been done: */
+    while (switching) {
+      // Start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /* Loop through all table rows (except the
+      first, which contains table headers): */
+      for (i = 1; i < (rows.length - 1); i++) {
+        // Start by saying there should be no switching:
+        shouldSwitch = false;
+        /* Get the two elements you want to compare,
+        one from current row and one from the next: */
+        x = rows[i].getElementsByTagName("TD")[n];
+        y = rows[i + 1].getElementsByTagName("TD")[n];
+        /* Check if the two rows should switch place,
+        based on the direction, asc or desc: */
+        if (dir == "asc") {
+          if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        } else if (dir == "desc") {
+          if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+            // If so, mark as a switch and break the loop:
+            shouldSwitch = true;
+            break;
+          }
+        }
+      }
+      if (shouldSwitch) {
+        /* If a switch has been marked, make the switch
+        and mark that a switch has been done: */
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        switching = true;
+        // Each time a switch is done, increase this count by 1:
+        switchcount++;
+      } else {
+        /* If no switching has been done AND the direction is "asc",
+        set the direction to "desc" and run the while loop again. */
+        if (switchcount == 0 && dir == "asc") {
+          dir = "desc";
+          switching = true;
+        }
+      }
+    }
+  }
+</script>
+<script>
+    function myFunction(tableval, inputId) {
+      // Declare variables
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById(inputId);
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[tableval];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1 && tr[i].style.display!="none") {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
 <style>
   .marginTop10 {
     margin-bottom: -15px;
     margin-top: -10px;
+  }
+
+  @media (max-width: 1000px) {
+    .classContainer {
+      width: 100%;
+      margin: 0%;
+      overflow: scroll;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .classContainer {
+      width: 250%;
+      margin-left: -75%;
+    }
   }
 </style>
 {% endblock %}

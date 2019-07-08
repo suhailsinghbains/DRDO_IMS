@@ -23,20 +23,20 @@ class Auth(db.Model):
         return '<User>' +self.empId+self.password+str(self.admin)
 
 class Employees(db.Model):
-    group = db.Column(db.String(20), nullable=False)
+    group = db.Column(db.String(20))
     empId = db.Column(db.String(16), primary_key=True, unique=True, nullable=False)
     name = db.Column(db.String(50), nullable=False)
-    dob = db.Column(db.String(10), nullable=False)
+    dob = db.Column(db.String(10))
     address = db.Column(db.String(100), nullable=False)
-    cpu = db.Column(db.String(16), db.ForeignKey('cpu.tagId'))
-    ram = db.Column(db.String(16), db.ForeignKey('ram.tagId'))
-    psu = db.Column(db.String(16), db.ForeignKey('psu.tagId'))
-    display = db.Column(db.String(16), db.ForeignKey('display.tagId'))
-    keyboard = db.Column(db.String(16), db.ForeignKey('keyboard.tagId'))
-    mouse = db.Column(db.String(16), db.ForeignKey('mouse.tagId'))
-    ups = db.Column(db.String(16), db.ForeignKey('ups.tagId'))
-    printer = db.Column(db.String(16), db.ForeignKey('printer.tagId'))
-    scanner = db.Column(db.String(16), db.ForeignKey('scanner.tagId'))
+    cpu = db.Column(db.String(16))
+    ram = db.Column(db.String(16))
+    psu = db.Column(db.String(16))
+    display = db.Column(db.String(16))
+    keyboard = db.Column(db.String(16))
+    mouse = db.Column(db.String(16))
+    ups = db.Column(db.String(16))
+    printer = db.Column(db.String(16))
+    scanner = db.Column(db.String(16))
     messages = db.Column(db.String(16))
     code = db.relationship("Auth", backref="emp")
     def __init__(self, empId, name, group, dob, address):
@@ -58,13 +58,15 @@ class Cpu(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="cpu_emp")
+    # link = db.relationship("Employees", backref="cpu_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
         self.remarks = remarks
+    def __repr__(self):
+        return str({"tagId": self.tagId, "name": self.name, "model": self.model, "gen": self.gen, "remarks": self.remarks})
 
 class Ram(db.Model):
     tagId = db.Column(db.String(16), primary_key=True, unique=True, nullable=False)
@@ -73,9 +75,9 @@ class Ram(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="ram_emp")
+    # link = db.relationship("Employees", backref="ram_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -88,9 +90,9 @@ class Psu(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="psu_emp")
+    # link = db.relationship("Employees", backref="psu_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -103,9 +105,9 @@ class Display(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="dis_emp")
+    # link = db.relationship("Employees", backref="dis_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -118,9 +120,9 @@ class Ups(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="ups_emp")
+    # link = db.relationship("Employees", backref="ups_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -133,9 +135,9 @@ class Scanner(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="sca_emp")
+    # link = db.relationship("Employees", backref="sca_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -148,9 +150,9 @@ class Printer(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="pri_emp")
+    # link = db.relationship("Employees", backref="pri_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -163,9 +165,9 @@ class Keyboard(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="key_emp")
+    # link = db.relationship("Employees", backref="key_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -178,9 +180,9 @@ class Mouse(db.Model):
     model = db.Column(db.String(10), nullable=False)
     gen = db.Column(db.String(10), nullable=False)
     remarks = db.Column(db.String(50), nullable=False)
-    link = db.relationship("Employees", backref="mou_emp")
+    # link = db.relationship("Employees", backref="mou_emp")
     def __init__(self, tagId, name, model, gen, remarks):
-        self.empId = tagId
+        self.tagId = tagId
         self.name= name
         self.model = model
         self.gen = gen
@@ -235,7 +237,7 @@ def signup():
             auth = Auth.query.filter_by(empId = userId).first()
             if(auth == None):
                 authUser = Auth(userId, password)
-                emp = Employees(userId,'none', 'none', 'none', 'none')
+                emp = Employees(userId,'', '', '', '')
                 print(emp)
                 db.session.add(authUser)
                 db.session.add(emp)
@@ -298,8 +300,103 @@ def dashboard():
             return redirect('/')
         else:
             emp = Employees.query.filter_by(empId=session['userId']).first()
-            print(emp)
-            return render_template('Dashboard/index.html', data=emp)
+            admin = Auth.query.filter_by(empId = session['userId']).first().admin
+            userRow = []
+            if(admin==True):
+                AllData=Employees.query.all()
+                for item in AllData:
+                    # print(item)
+                    cpus = []
+                    rams = []
+                    msgs = []
+                    psus = []
+                    displays = []
+                    keyboards=[]
+                    mouses=[]
+                    upss=[]
+                    printers=[]
+                    scanners=[]
+                    messages=[]
+                    if item.cpu != None:
+                        cpuIds = item.cpu.split(',')
+                        for tagId in cpuIds:
+                            temp = Cpu.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                cpus.append(temp.name)
+                    if item.ram != None:
+                        ramIds = item.ram.split(',')
+                        for tagId in ramIds:
+                            temp = Ram.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                rams.append(temp.name)
+                    if item.psu != None:
+                        psuIds = item.psu.split(',')
+                        for tagId in psuIds:
+                            temp = Psu.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                psus.append(temp.name)
+                    if item.display != None:
+                        displayIds = item.display.split(',')
+                        for tagId in displayIds:
+                            temp = Display.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                displays.append(temp.name)
+                    if item.keyboard != None:
+                        keyboardIds = item.keyboard.split(',')
+                        for tagId in keyboardIds:
+                            temp = Keyboard.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                keyboards.append(temp.name)
+                    if item.mouse != None:
+                        mouseIds = item.mouse.split(',')
+                        for tagId in mouseIds:
+                            temp = Mouse.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                mouses.append(temp.name)
+                    if item.ups != None:
+                        upsIds = item.ups.split(',')
+                        for tagId in upsIds:
+                            temp = Ups.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                upss.append(temp.name)
+                    if item.printer != None:
+                        printerIds = item.printer.split(',')
+                        for tagId in printerIds:
+                            temp = Printer.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                printers.append(temp.name)
+                    if item.scanner != None:
+                        scannerIds = item.scanner.split(',')
+                        for tagId in scannerIds:
+                            temp = Scanner.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                scanners.append(temp.name)
+                    if item.messages!= None:
+                        messageIds = item.messages.split(',')
+                        for tagId in messageIds:
+                            temp = Display.query.filter_by(tagId=tagId).first()
+                            if temp != None:
+                                messages.append(temp.name)
+                    userRow.append({
+                        'empId': [item.empId],
+                        'name': [item.name],
+                        'group': [item.group],
+                        'cpu': cpus,
+                        'ram': rams,
+                        'psu': psus,
+                        'display': displays,
+                        'keyboard': keyboards,
+                        'mouse': mouses,
+                        'ups': upss,
+                        'printer': printers,
+                        'scanner': scanners
+                    })
+                print(userRow)
+            else:
+                userRow=None
+            # print(admin)
+            # print(emp)
+            return render_template('Dashboard/index.html', data=emp, admin=admin, alldata=userRow)
 
 @app.route('/messages', methods=['POST', 'GET'])
 def messages():
@@ -308,11 +405,16 @@ def messages():
         title = request.form['title']
         content = request.form['content']
         # Check if the userId exists or not
-
-        newid = str(int(Messages.query.all()[-1].tagId)+1)
+        if(Messages.query.all()==[]):
+            newid = str(0)
+        else:
+            newid = str(int(Messages.query.all()[-1].tagId)+1)
         msg= Messages(newid, title, content)
         emp = Employees.query.get(recipient)
-        emp.messages= emp.messages+','+ newid
+        if(emp.messages==None):
+            emp.messages=newid
+        else:
+            emp.messages= emp.messages+','+ newid
         print(Employees.query.all())
         # Get the empId and references it
         db.session.add(msg)
@@ -323,17 +425,20 @@ def messages():
     else:
         #Go to the Messages Page
         emp = Employees.query.filter_by(empId=session['userId']).first().messages
-        tags=emp.split(',')
-        messages='['
-        for tag in tags:
-            print(tag)
-            if(messages=='['):
-                messages+=str(Messages.query.filter_by(tagId=tag).first())
-            else:
-                messages=messages+','+str(Messages.query.filter_by(tagId=tag).first())
-        messages+=']'
+        if(emp==None):
+            messages='[]'
+        else:
+            tags=emp.split(',')
+            messages='['
+            for tag in tags:
+                print(tag)
+                if(messages=='['):
+                    messages+=str(Messages.query.filter_by(tagId=tag).first())
+                else:
+                    messages=messages+','+str(Messages.query.filter_by(tagId=tag).first())
+            messages+=']'
         # print(eval(messages.split('"')[0]))
-        return render_template('Messages/index.html', msg=eval(messages.split('"')[0]))
+        return render_template('Messages/index.html', msg=eval(messages.split('"')[0]), empId=session['userId'])
 
 @app.route('/signOut', methods=['GET'])
 def signOut():
@@ -341,6 +446,19 @@ def signOut():
     # cookie remove and go to '/'
     # return('SignOut/index.html')
     return redirect('/signIn')
+
+@app.route('/edit', methods=['POST', 'GET'])
+def edit():
+    if request.method == 'POST':
+        return 'Un'
+    else:
+        admin = Auth.query.filter_by(empId = session['userId']).first().admin
+        # Doing Magic Here
+        if(emp!=None or admin==True):
+
+            return render_template('Edit/index.html')
+        else:
+            return 'Unauth'
 
 # @app.route('/delete/<int:id>')
 # def delete(id):

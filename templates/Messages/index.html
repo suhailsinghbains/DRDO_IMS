@@ -22,7 +22,7 @@
                     <label for="recipient">Recipient User ID</label>
                 </div>
                 <div class="input-field col s6">
-                    <input id="title" name="title" type="text" class="validate">
+                    <input id="title" name="title" type="text" class="validate" value="From {{empId}}: ">
                     <label for="title">Title</label>
                 </div>
                 <div class="input-field col s6">
@@ -37,7 +37,8 @@
                         &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UPS:&nbsp;&nbsp;
                         &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Printer:&nbsp;&nbsp;
                         &#13;&#10;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Scanner:&nbsp;&nbsp;
-                        &#13;&#10;Thanks
+                        &#13;&#10;Regards
+                        &#13;&#10;{{empId}}
                     </textarea>
                     <label for="content">Content</label>
                 </div>
@@ -49,14 +50,22 @@
             </form>
         </div>
     </div>
-    {% for item in msg %}
-    <div class="card">
-        <div class="card-content">
-            <h4 class="marginTop0">{{item.title}}</h4>
-            <p>{{item.messages}}</p>
+    {% if msg==[] %}
+        <div class="card">
+            <div class="card-content">
+                <h4 class="marginTop0">No Messages</h4>
+            </div>
         </div>
-    </div>
-    {% endfor %}
+    {% else %}
+        {% for item in msg %}
+        <div class="card">
+            <div class="card-content">
+                <h4 class="marginTop0">{{item.title}}</h4>
+                <p>{{item.messages}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% endif %}
 </div>
 <script>
     M.AutoInit();
@@ -70,8 +79,8 @@
             document.getElementById('deleteIcon').style.display = 'none';
             document.getElementById('Form').style.display = 'none';
             document.getElementById('addIcon').style.display = 'block';
-            document.getElementById('title').value = "";
-            document.getElementById('content').value = '\n\n\n\n \n     CPU:  \n\n     RAM:  \n\n     PSU:  \n\n     Display:  \n\n     Keyboard:  \n\n     Mouse:  \n\n     UPS:  \n\n     Printer:  \n\n     Scanner:  \n\nThanks';
+            document.getElementById('title').value = "From {{empId}}: ";
+            document.getElementById('content').value = '\n\n\n\n \n     CPU:  \n\n     RAM:  \n\n     PSU:  \n\n     Display:  \n\n     Keyboard:  \n\n     Mouse:  \n\n     UPS:  \n\n     Printer:  \n\n     Scanner:  \n\nRegards\n\n{{empId}}';
             $('input#title, textarea#content').characterCounter();
         }
     }
