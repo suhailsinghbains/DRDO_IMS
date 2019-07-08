@@ -456,8 +456,17 @@ def edit():
         # Doing Magic Here
         if(admin==True):
             employees = Employees.query.all()
-
-            return render_template('Edit/index.html', Employees=employees)
+            cpus = Cpu.query.all()
+            rams = Ram.query.all()
+            psus =Psu.query.all()
+            displays = Display.query.all()
+            keyboards = Keyboard.query.all()
+            mouses = Mouse.query.all()
+            upss = Ups.query.all()
+            printers =Printer.query.all()
+            scanners=Scanner.query.all()
+            messages = Messages.query.all()
+            return render_template('Edit/index.html', Employees=employees, Cpu=cpus, Ram=rams, Psu=psus, Display=displays, Keyboard=keyboards, Mouse=mouses, Ups=upss, Printer=printers, Scanner=scanners, Message=messages)
         else:
             return 'Unauth'
 

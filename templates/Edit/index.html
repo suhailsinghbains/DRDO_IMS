@@ -6,6 +6,303 @@
 {% block body %}
 <div class="container" style="font-size: 20px;">
     <h1>Edit</h1>
-    {{Employees}}
+    <div style="text-align-last: center;">
+        <a id="editIcon" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+            data-position="bottom" data-tooltip="Save all the Tables"><i class="material-icons"
+                onclick="Save()">save</i></a>
+    </div>
+    <div class="row spacing">
+        <div class="col s12">
+            <h4>Employee Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>EmpId</th>
+                        <th>Name</th>
+                        <th>Group</th>
+                        <th>DOB</th>
+                        <th>Address</th>
+                        <th>CPU</th>
+                        <th>RAM</th>
+                        <th>PSU</th>
+                        <th>Display</th>
+                        <th>Keyboard</th>
+                        <th>Mouse</th>
+                        <th>UPS</th>
+                        <th>Printer</th>
+                        <th>Scanner</th>
+                        <th>Messages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Employees %}
+                    <tr>
+                        {% for prop in ['empId','name','group','dob','address','cpu','ram','psu','display','keyboard','mouse','ups','printer','scanner','messages'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>CPU Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Cpu %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col s6">
+            <h4>RAM Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Ram %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>PSU Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Psu %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>Displays Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Display %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>Keyboards Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Keyboard %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>Mouse Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Mouse %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>UPS Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Ups %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>Printer Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Printer %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>Scanner Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Gen</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Scanner %}
+                    <tr>
+                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s6">
+            <h4>Message Table</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>TagId</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in Message %}
+                    <tr>
+                        {% for prop in ['tagId','title','messages']%}
+                        <td>
+                            <input value="{{item[prop]}}">
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+<style>
+    .spacing {
+        width: 250% !important;
+        margin-left: -75% !important;
+    }
+</style>
 {% endblock %}
