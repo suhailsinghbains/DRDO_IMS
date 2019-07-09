@@ -49,14 +49,21 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                         <td>
                             <a id="EmployeeAdd"
                                 class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                 data-position="bottom" data-tooltip="Add Employee Entry"><i class="material-icons"
                                     onclick="Add(0)">add</i></a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <a id="EmployeeRem"
+                                class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                data-position="bottom" data-tooltip="Remove Last Employee Entry"><i
+                                    class="material-icons" onclick="Delete(0)">delete</i></a>
                         </td>
                     </tr>
                 </tbody>
@@ -87,13 +94,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="CpuAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="right" data-tooltip="Add CPU Entry"><i class="material-icons"
                                         onclick="Add(1)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="CpuRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Remove Last CPU Entry"><i class="material-icons"
+                                        onclick="Delete(1)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -123,13 +137,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="RamAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="left" data-tooltip="Add RAM Entry"><i class="material-icons"
                                         onclick="Add(2)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="RamRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Remove Last RAM Entry"><i class="material-icons"
+                                        onclick="Delete(2)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -160,13 +181,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="PsuAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="right" data-tooltip="Add PSU Entry"><i class="material-icons"
                                         onclick="Add(3)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="PsuRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Remove Last PSU Entry"><i class="material-icons"
+                                        onclick="Delete(3)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -195,13 +223,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="DisplayAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="left" data-tooltip="Add Display Entry"><i class="material-icons"
                                         onclick="Add(4)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="DisplayRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Remove Last Display Entry"><i
+                                        class="material-icons" onclick="Delete(4)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -232,13 +267,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="KeyboardAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="right" data-tooltip="Add Keyboard Entry"><i class="material-icons"
                                         onclick="Add(5)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="KeyboardRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Remove Last Keyboard Entry"><i
+                                        class="material-icons" onclick="Delete(5)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -267,13 +309,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="MouseAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="left" data-tooltip="Add Mouse Entry"><i class="material-icons"
                                         onclick="Add(6)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="MouseRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Remove Last Mouse Entry"><i
+                                        class="material-icons" onclick="Delete(6)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -305,13 +354,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
-                                <a id="UpsIcon"
+                                <a id="UpsAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="right" data-tooltip="Add UPS Entry"><i class="material-icons"
                                         onclick="Add(7)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="UpsRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Remove Last UPS Entry"><i class="material-icons"
+                                        onclick="Delete(7)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -340,13 +396,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="PrinterAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="left" data-tooltip="Add Printer Entry"><i class="material-icons"
                                         onclick="Add(8)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="PrinterRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Remove Last Printer Entry"><i
+                                        class="material-icons" onclick="Delete(8)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -378,13 +441,20 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td>
                                 <a id="ScannerAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
                                     data-position="right" data-tooltip="Add Scanner Entry"><i class="material-icons"
                                         onclick="Add(9)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="ScannerRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Remove Last Scanner Entry"><i
+                                        class="material-icons" onclick="Delete(9)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -392,7 +462,7 @@
             </div>
 
             <div class="col s6">
-                <h4>Message Table</h4>
+                <h4>Messages Table</h4>
                 <table class="centered" name="Table">
                     <thead>
                         <tr>
@@ -412,12 +482,18 @@
                         </tr>
                         {% endfor %}
                         <tr>
-                            <td></td>
                             <td>
                                 <a id="MessageAdd"
                                     class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
-                                    data-position="left" data-tooltip="Add Message Entry"><i class="material-icons"
+                                    data-position="left" data-tooltip="Add Messages Entry"><i class="material-icons"
                                         onclick="Add(10)">add</i></a>
+                            </td>
+                            <td></td>
+                            <td>
+                                <a id="MessageRem"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Remove Last Messages Entry"><i
+                                        class="material-icons" onclick="Delete(10)">delete</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -431,7 +507,7 @@
     <br />
 </div>
 <script>
-    var prop = ['Employees', 'Cpu', 'Ram', 'Psu', 'Display', 'Keyboard', 'Mouse', 'Ups', 'Printer', 'Scanner', 'Message']
+    var prop = ['Employees', 'Cpu', 'Ram', 'Psu', 'Display', 'Keyboard', 'Mouse', 'Ups', 'Printer', 'Scanner', 'Messages']
     function Add(n) {
         // console.log(prop[n]);
         let Table = document.getElementsByName('Table')[n];
@@ -440,7 +516,7 @@
         if (prop[n] == 'Employees') {
             TRpart1 = '<tr><td><input value="';
             TRpart2 = '"></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td></tr>';
-        } else if (prop[n] == 'Message') {
+        } else if (prop[n] == 'Messages') {
             TRpart1 = '<tr><td><input value="';
             TRpart2 = '"></td><td><input value=""></td><td><input value=""></td></tr>';
         } else {
@@ -459,6 +535,16 @@
             Table.children[1].insertRow(Table.children[1].children.length - 1).innerHTML = TRpart1 + newTagId + TRpart2;
         }
 
+    }
+    function Delete(n) {
+        let Table = document.getElementsByName('Table')[n];
+        // console.log(Table)
+        if (Table.children[1].children.length - 2 === -1) {
+            console.log('Nothing to be done');
+            alert('No rows could be deleted; None Exists');
+        } else {
+            Table.children[1].children[Table.children[1].children.length - 2].remove();
+        }
     }
     function Save() {
         let AllData = [];
@@ -491,6 +577,12 @@
             TR = [];
         }
         console.log(AllData)
+        $.post("/edit", {
+            'alldata': JSON.stringify(AllData)
+        }).then(newData => {
+            // console.log(newData)
+            // location.reload()
+        });
         // Send this to python code
     }
 </script>

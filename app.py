@@ -4,6 +4,7 @@
 from flask import Flask, render_template, url_for, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import json
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -424,20 +425,23 @@ def messages():
         return redirect('/messages')
     else:
         #Go to the Messages Page
-        emp = Employees.query.filter_by(empId=session['userId']).first().messages
-        if(emp==None):
+        if(Employees.query.filter_by(empId=session['userId']).first()==None):
             messages='[]'
         else:
-            tags=emp.split(',')
-            messages='['
-            for tag in tags:
-                print(tag)
-                if(messages=='['):
-                    messages+=str(Messages.query.filter_by(tagId=tag).first())
-                else:
-                    messages=messages+','+str(Messages.query.filter_by(tagId=tag).first())
-            messages+=']'
-        # print(eval(messages.split('"')[0]))
+            emp = Employees.query.filter_by(empId=session['userId']).first().messages
+            if(emp==None):
+                messages='[]'
+            else:
+                tags=emp.split(',')
+                messages='['
+                for tag in tags:
+                    print(tag)
+                    if(messages=='['):
+                        messages+=str(Messages.query.filter_by(tagId=tag).first())
+                    else:
+                        messages=messages+','+str(Messages.query.filter_by(tagId=tag).first())
+                messages+=']'
+            # print(eval(messages.split('"')[0]))
         return render_template('Messages/index.html', msg=eval(messages.split('"')[0]), empId=session['userId'])
 
 @app.route('/signOut', methods=['GET'])
@@ -450,6 +454,90 @@ def signOut():
 @app.route('/edit', methods=['POST', 'GET'])
 def edit():
     if request.method == 'POST':
+        prop = ['Employees', 'Cpu', 'Ram', 'Psu', 'Display', 'Keyboard', 'Mouse', 'Ups', 'Printer', 'Scanner', 'Messages']
+        i=-1
+        for obj in json.loads(request.form['alldata']):
+            i+=1
+            print(prop[i])
+            for item in obj[prop[i]]:
+                # tempClass = eval(prop[i])
+                # for item in eval(prop[i]).query.all():
+                #     delClass = eval(prop[i]).query.delete()
+                if prop[i]=='Employees':
+                    auth = Auth.query.filter_by(empId = item['value'][0]['EmpId']).first()
+                    if(auth==None):
+                        authUser = Auth(item['value'][0]['EmpId'], 'password')
+                        db.session.add(authUser)
+                    tempClass=eval(prop[i]).query.filter_by(empId= int(item['value'][0]['EmpId'])).first()
+                    if(tempClass!=None):
+                        tempClass.empId = int(item['value'][0]['EmpId'])
+                        tempClass.name = item['value'][1]['Name']
+                        tempClass.group = item['value'][2]['Group']
+                        tempClass.dob= item['value'][3]['DOB']
+                        tempClass.address = item['value'][4]['Address']
+                        tempClass.cpu = item['value'][5]['CPU']
+                        tempClass.ram = item['value'][6]['RAM']
+                        tempClass.psu = item['value'][7]['PSU']
+                        tempClass.display = item['value'][8]['Display']
+                        tempClass.keyboard= item['value'][9]['Keyboard']
+                        tempClass.mouse= item['value'][10]['Mouse']
+                        tempClass.ups= item['value'][11]['UPS']
+                        tempClass.printer = item['value'][12]['Printer']
+                        tempClass.scanner = item['value'][13]['Scanner']
+                        tempClass.messages = item['value'][14]['Messages']
+                    else:    
+                        tempClass = eval(prop[i])(int(item['value'][0]['EmpId']),
+                        item['value'][1]['Name'],
+                        item['value'][2]['Group'],
+                        item['value'][3]['DOB'],
+                        item['value'][4]['Address']
+                        )
+                        tempClass.cpu = item['value'][5]['CPU']
+                        tempClass.ram = item['value'][6]['RAM']
+                        tempClass.psu = item['value'][7]['PSU']
+                        tempClass.display = item['value'][8]['Display']
+                        tempClass.keyboard= item['value'][9]['Keyboard']
+                        tempClass.mouse= item['value'][10]['Mouse']
+                        tempClass.ups= item['value'][11]['UPS']
+                        tempClass.printer = item['value'][12]['Printer']
+                        tempClass.scanner = item['value'][13]['Scanner']
+                        tempClass.messages = item['value'][14]['Messages']
+                        db.session.add(tempClass)
+                    db.session.commit()
+                    # print(tempClass)
+                elif prop[i]=='Messages':
+                    tempClass=eval(prop[i]).query.filter_by(tagId= int(item['value'][0]['TagId'])).first()
+                    if(tempClass!=None):
+                        tempClass.tagId = int(item['value'][0]['TagId'])
+                        tempClass.title = item['value'][1]['Title']
+                        tempClass.messages = item['value'][2]['Content']
+                    else:    
+                        tempClass = eval(prop[i])(int(item['value'][0]['TagId']),
+                        item['value'][1]['Title'],
+                        item['value'][2]['Content']
+                        )
+                        db.session.add(tempClass)
+                    db.session.commit()                    
+                else:
+                    tempClass=eval(prop[i]).query.filter_by(tagId= int(item['value'][0]['TagId'])).first()
+                    if(tempClass!=None):
+                        tempClass.tagId = int(item['value'][0]['TagId'])
+                        tempClass.name = item['value'][1]['Name']
+                        tempClass.model = item['value'][2]['Model']
+                        tempClass.gen = item['value'][3]['Gen']
+                        tempClass.remarks = item['value'][4]['Remarks']
+                    else:
+                        tempClass = eval(prop[i])(int(item['value'][0]['TagId']),
+                        item['value'][1]['Name'],
+                        item['value'][2]['Model'],
+                        item['value'][3]['Gen'],
+                        item['value'][4]['Remarks']
+                        )
+                        db.session.add(tempClass)
+                    db.session.commit()
+                print(eval(prop[i]).query.all())
+
+        # print(arr)
         #Get JS object here and update all the entries
         #Delete all the tables 
         # Insert all the values received
