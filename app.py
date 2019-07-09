@@ -450,6 +450,9 @@ def signOut():
 @app.route('/edit', methods=['POST', 'GET'])
 def edit():
     if request.method == 'POST':
+        #Get JS object here and update all the entries
+        #Delete all the tables 
+        # Insert all the values received
         return 'Un'
     else:
         admin = Auth.query.filter_by(empId = session['userId']).first().admin

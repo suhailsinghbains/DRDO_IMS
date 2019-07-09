@@ -1,20 +1,20 @@
 {% extends 'Nav/index.html' %}
 {% block head %}
-<title>DRDO: Edit</title>
+<title>DRDO: Edit Page</title>
 {% endblock %}
 
 {% block body %}
 <div class="container" style="font-size: 20px;">
-    <h1>Edit</h1>
+    <h1>Edit Page</h1>
     <div style="text-align-last: center;">
         <a id="editIcon" class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
             data-position="bottom" data-tooltip="Save all the Tables"><i class="material-icons"
                 onclick="Save()">save</i></a>
     </div>
     <div class="row spacing">
-        <div class="col s12">
+        <div class="col s12" style="padding-bottom: 4%;">
             <h4>Employee Table</h4>
-            <table>
+            <table class="centered" name="Table">
                 <thead>
                     <tr>
                         <th>EmpId</th>
@@ -44,262 +44,462 @@
                         {% endfor %}
                     </tr>
                     {% endfor %}
-
-                </tbody>
-            </table>
-        </div>
-        <div class="col s6">
-            <h4>CPU Table</h4>
-            <table>
-                <thead>
                     <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Cpu %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                         <td>
-                            <input value="{{item[prop]}}">
+                            <a id="EmployeeAdd"
+                                class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                data-position="bottom" data-tooltip="Add Employee Entry"><i class="material-icons"
+                                    onclick="Add(0)">add</i></a>
                         </td>
-                        {% endfor %}
                     </tr>
-                    {% endfor %}
                 </tbody>
             </table>
         </div>
 
-        <div class="col s6">
-            <h4>RAM Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Ram %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+        <div class="row s12 margin10">
+            <div class="col s6">
+                <h4>CPU Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Cpu %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="col s6">
-            <h4>PSU Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Psu %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="CpuAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Add CPU Entry"><i class="material-icons"
+                                        onclick="Add(1)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col s6">
+                <h4>RAM Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Ram %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="RamAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Add RAM Entry"><i class="material-icons"
+                                        onclick="Add(2)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col s6">
-            <h4>Displays Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Display %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+        <div class="row s12 margin10">
+            <div class="col s6">
+                <h4>PSU Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Psu %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="col s6">
-            <h4>Keyboards Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Keyboard %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="PsuAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Add PSU Entry"><i class="material-icons"
+                                        onclick="Add(3)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s6">
+                <h4>Displays Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Display %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="DisplayAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Add Display Entry"><i class="material-icons"
+                                        onclick="Add(4)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col s6">
-            <h4>Mouse Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Mouse %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+        <div class="row s12 margin10">
+            <div class="col s6">
+                <h4>Keyboards Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Keyboard %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="col s6">
-            <h4>UPS Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Ups %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="KeyboardAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Add Keyboard Entry"><i class="material-icons"
+                                        onclick="Add(5)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s6">
+                <h4>Mouse Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Mouse %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="MouseAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Add Mouse Entry"><i class="material-icons"
+                                        onclick="Add(6)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
-        <div class="col s6">
-            <h4>Printer Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Printer %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+        <div class="row s12 margin10">
+            <div class="col s6">
+                <h4>UPS Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Ups %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="col s6">
-            <h4>Scanner Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Name</th>
-                        <th>Model</th>
-                        <th>Gen</th>
-                        <th>Remarks</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Scanner %}
-                    <tr>
-                        {% for prop in ['tagId','name','model','gen','remarks'] %}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="UpsIcon"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Add UPS Entry"><i class="material-icons"
+                                        onclick="Add(7)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s6">
+                <h4>Printer Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Printer %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="PrinterAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Add Printer Entry"><i class="material-icons"
+                                        onclick="Add(8)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="col s6">
-            <h4>Message Table</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>TagId</th>
-                        <th>Title</th>
-                        <th>Content</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in Message %}
-                    <tr>
-                        {% for prop in ['tagId','title','messages']%}
-                        <td>
-                            <input value="{{item[prop]}}">
-                        </td>
+        <div class="row s12 margin10">
+
+            <div class="col s6">
+                <h4>Scanner Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Gen</th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Scanner %}
+                        <tr>
+                            {% for prop in ['tagId','name','model','gen','remarks'] %}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
                         {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <a id="ScannerAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="right" data-tooltip="Add Scanner Entry"><i class="material-icons"
+                                        onclick="Add(9)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col s6">
+                <h4>Message Table</h4>
+                <table class="centered" name="Table">
+                    <thead>
+                        <tr>
+                            <th>TagId</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in Message %}
+                        <tr>
+                            {% for prop in ['tagId','title','messages']%}
+                            <td>
+                                <input value="{{item[prop]}}">
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <td></td>
+                            <td>
+                                <a id="MessageAdd"
+                                    class="btn-floating btn-large waves-effect waves-light teal btn tooltipped"
+                                    data-position="left" data-tooltip="Add Message Entry"><i class="material-icons"
+                                        onclick="Add(10)">add</i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     </div>
+    <br />
+    <br />
+    <br />
 </div>
+<script>
+    var prop = ['Employees', 'Cpu', 'Ram', 'Psu', 'Display', 'Keyboard', 'Mouse', 'Ups', 'Printer', 'Scanner', 'Message']
+    function Add(n) {
+        // console.log(prop[n]);
+        let Table = document.getElementsByName('Table')[n];
+        let newTagId;
+        let TRpart1, TRpart2;
+        if (prop[n] == 'Employees') {
+            TRpart1 = '<tr><td><input value="';
+            TRpart2 = '"></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td></tr>';
+        } else if (prop[n] == 'Message') {
+            TRpart1 = '<tr><td><input value="';
+            TRpart2 = '"></td><td><input value=""></td><td><input value=""></td></tr>';
+        } else {
+            TRpart1 = '<tr><td><input value="';
+            TRpart2 = '"></td><td><input value=""></td><td><input value=""></td><td><input value=""></td><td><input value=""></td></tr>';
+        }
+        if (Table.children[1].children.length - 2 === -1) {
+            // console.log("New")
+            newTagId = 1;
+            // console.log(newTagId)
+            Table.children[1].insertRow(0).innerHTML = TRpart1 + newTagId + TRpart2;
+        } else {
+            // console.log("Add like this")
+            newTagId = parseInt(Table.children[1].children[Table.children[1].children.length - 2].children[0].children[0].value) + 1;
+            // console.log(newTagId)
+            Table.children[1].insertRow(Table.children[1].children.length - 1).innerHTML = TRpart1 + newTagId + TRpart2;
+        }
+
+    }
+    function Save() {
+        let AllData = [];
+        for (property in prop) {
+            let Table = document.getElementsByName('Table')[property]
+            let mainHeading = Table.children[0].children[0];
+            let Collections = Table.children[1].children;
+            let TD = [];
+            let TR = [];
+            // console.log(prop[property])
+            //Table
+            for (row in Collections) {
+                if (row < Collections.length - 1) {
+                    //TR
+                    for (cell in Collections[row].children) {
+                        if (cell < Collections[row].children) {
+                            //TD
+                            TD.push(JSON.parse('{"' + mainHeading.children[cell].innerHTML + '":"' + Collections[row].children[cell].children[0].value + '"}'))
+                        }
+                    }
+                    let temp = JSON.parse('{"' + "value" + '":[]}')
+                    temp.value = TD
+                    TR.push(temp)
+                    TD = [];
+                }
+            }
+            let newtemp = JSON.parse('{"' + prop[property] + '":[]}')
+            newtemp[prop[property]] = TR;
+            AllData.push(newtemp)
+            TR = [];
+        }
+        console.log(AllData)
+        // Send this to python code
+    }
+</script>
 <style>
+    .margin10 {
+        padding-top: 2%;
+        /* margin-bottom: 5%; */
+    }
+
     .spacing {
         width: 250% !important;
         margin-left: -75% !important;
